@@ -6,7 +6,8 @@ import random
 import sys
 import threading
 import time
-import SMS
+import sms
+
 import ltr559
 import RPi.GPIO as GPIO
 import ST7735
@@ -783,7 +784,7 @@ Dry point: {dry_point}
 
 
 class Alarm(View):
-    SMS.message()
+    sms.message()
     def __init__(self, image, enabled=True, interval=10.0, beep_frequency=440):
         self.piezo = Piezo()
         self.enabled = enabled
@@ -860,6 +861,7 @@ class Alarm(View):
     def sleep(self, duration=500):
         self._sleep_until = time.time() + duration
 
+       
 
 class ViewController:
     def __init__(self, views):
@@ -1156,4 +1158,3 @@ Low Light Value {:.2f}
 
 if __name__ == "__main__":
     main()
-
